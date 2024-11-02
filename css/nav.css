@@ -1,0 +1,26 @@
+.navbar {
+  background-color: #f8f9fa; /* Warna latar belakang navbar */
+  padding: 10px 20px; /* Ruang dalam navbar */
+  border-bottom: 1px solid #dee2e6; /* Garis batas bawah */
+}
+
+.nav-link {
+  color: #007bff; /* Warna teks link */
+  font-weight: 500; /* Ketebalan font */
+  text-decoration: none; /* Menghilangkan garis bawah */
+  margin: 0 10px; /* Ruang antar link */
+  transition: color 0.3s; /* Animasi transisi warna */
+}
+
+.nav-link:hover {
+  color: #0056b3; /* Warna saat hover */
+}
+
+.active {
+  color: #333; /* Warna untuk link aktif */
+  font-weight: bold; /* Menonjolkan link aktif */
+}
+
+.pipe {
+  color: #6c757d; /* Warna untuk pemisah */
+}

