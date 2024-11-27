@@ -61,19 +61,19 @@ function sendToBot(data) {
         if (result.ok) {
           Toast.fire({
             icon: "success",
-            title: "Pesan berhasil dikirim ke " + chatId + "!",
+            title: "Success",
           });
         } else {
           Toast.fire({
             icon: "error",
-            title: "Gagal mengirim pesan ke " + chatId + ": " + result.description,
+            title: "Gagal",
           });
         }
       })
       .catch((error) => {
         Toast.fire({
           icon: "error",
-          title: "Terjadi kesalahan saat mengirim ke " + chatId + ": " + error.message,
+          title: "Gagal",
         });
       });
   });
